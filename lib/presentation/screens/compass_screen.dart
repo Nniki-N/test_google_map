@@ -13,30 +13,30 @@ class CompassScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: BlocBuilder<CompassBloc, CompassState>(
-          builder: (context, compassState) {
-            return Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Transform.rotate(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            BlocBuilder<CompassBloc, CompassState>(
+              builder: (context, compassState) {
+                return Transform.rotate(
                   angle: compassState.bearing * pi / 180,
                   child: const Icon(
                     Icons.arrow_circle_up_outlined,
                     size: 350,
                     color: Colors.blue,
                   ),
-                ),
-                const SizedBox(height: 40),
-                CustomButton(
-                  text: 'Back',
-                  backgroubdColor: Colors.red,
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
-            );
-          },
+                );
+              },
+            ),
+            const SizedBox(height: 40),
+            CustomButton(
+              text: 'Back',
+              backgroubdColor: Colors.red,
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
         ),
       ),
     );
